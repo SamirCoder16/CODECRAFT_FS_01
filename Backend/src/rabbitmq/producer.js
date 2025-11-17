@@ -5,7 +5,10 @@ let channel;
 
 export const connectRabbitMQ = async () => {
     try {
-        const connection = await amqp.connect(ENV.RABBITMQ_URL); // connect to RabbitMQ server
+        const connection = await amqp.connect(ENV.RABBITMQ_URL, {
+            heartbeat: 60,
+            timeout: 30000
+        }); // connect to RabbitMQ server
         channel = await connection.createChannel(); // create a channel
 
         const exchange = 'mail_exchange';
