@@ -20,7 +20,7 @@ app.use(
   cors({
     origin: "https://codecraft-fs-01-frontend.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
     credentials: true,
   })
 );
