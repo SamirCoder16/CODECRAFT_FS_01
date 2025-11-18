@@ -138,7 +138,13 @@ const Hero = () => {
                 navigate("/auth/register");
               }}
                className="bg-indigo-600 cursor-pointer hover:bg-indigo-700 text-white active:scale-95 transition rounded-md px-7 h-11">
-                Get started
+                {
+                  user ? (
+                    <span>Welcome, {user?.userName}</span>
+                  ) : (
+                  "Get Started for Free"
+                  )
+                }
               </button>
             </div>
           </div>
