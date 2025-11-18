@@ -4,7 +4,10 @@ import { sendMailforPasswordReset } from "../utils/mail.js";
 
 export const forgotPasswordConsumer = async () => {
   try {
-    const connection = await amqp.connect(ENV.RABBIT_MQ_URI);
+    const connection = await amqp.connect(ENV.RABBIT_MQ_URI, {
+      heartbeat: 60,
+      ssl: { rejectUnauthorized: false }
+    });
     const channel = await connection.createChannel();
 
     await channel.assertQueue("mail_password_reset_queue", { durable: true });

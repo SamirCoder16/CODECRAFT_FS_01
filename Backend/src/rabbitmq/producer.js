@@ -7,7 +7,7 @@ export const connectRabbitMQ = async () => {
     try {
         const connection = await amqp.connect(ENV.RABBITMQ_URL, {
             heartbeat: 60,
-            timeout: 30000
+            ssl: { rejectUnauthorized: false }
         }); // connect to RabbitMQ server
         channel = await connection.createChannel(); // create a channel
 
