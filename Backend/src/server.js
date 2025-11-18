@@ -26,7 +26,13 @@ app.use(
     credentials: true,
   })
 );
-app.use(helmet());
+app.use(
+  helmet({
+    crossOriginResourcePolicy: false,
+    crossOriginOpenerPolicy: false,
+    contentSecurityPolicy: false,
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
